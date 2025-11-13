@@ -8,12 +8,12 @@
 
 ## 🏗 Parte 1: Configuración Inicial del Proyecto (Ambos)
 
-- [ ] Crear carpeta `traductor-ia-[nombre-iniciales]`
-- [ ] Inicializar repositorio Git (`git init`)
-- [ ] Crear rama `hito2/desarrollo-ia`
-- [ ] Crear estructura de carpetas `/backend` y `/frontend`
-- [ ] Añadir `.gitignore`
-- [ ] Crear `.env.example` y `.env`
+- [X] Crear carpeta `traductor-ia-[nombre-iniciales]`
+- [X] Inicializar repositorio Git (`git init`)
+- [X] Crear rama `hito2/desarrollo-ia`
+- [X] Crear estructura de carpetas `/backend` y `/frontend`
+- [X] Añadir `.gitignore`
+- [X] Crear `.env.example` y `.env`
 - [ ] Verificar instalación de Node.js, Docker y Ollama
 
 ---
