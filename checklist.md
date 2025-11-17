@@ -21,10 +21,10 @@
 ## 💻 Parte 2: Backend - Persona A
 
 ### 2.1 `backend/db.js`
-- [ ] Importar `better-sqlite3`
-- [ ] Crear base de datos `db/traducciones.db`
-- [ ] Crear tabla `traducciones`
-- [ ] Exportar instancia de BD
+- [x] Importar `better-sqlite3`
+- [x] Crear base de datos `db/traducciones.db`
+- [x] Crear tabla `traducciones`
+- [x] Exportar instancia de BD
 
 ### 2.2 `backend/server.js`
 - [ ] Importar `express`, `cors`, `dotenv`
