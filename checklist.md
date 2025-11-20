@@ -1,8 +1,8 @@
 # ✅ Checklist - Traductor Inteligente Multilenguaje
 
 ## 👥 Equipo
-- **Backend:** [Nombre Persona A]
-- **Frontend:** [Nombre Persona B]
+- **Backend:** Pablo
+- **Frontend:** Fran
 
 ---
 
@@ -18,7 +18,7 @@
 
 ---
 
-## 💻 Parte 2: Backend - Persona A
+## 💻 Parte 2: Backend - Pablo
 
 ### 2.1 `backend/db.js`
 - [x] Importar `better-sqlite3`
