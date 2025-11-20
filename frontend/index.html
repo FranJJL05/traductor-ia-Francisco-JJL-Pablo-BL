@@ -9,10 +9,10 @@
 <body>
     <header>
         <h1>Traductor IA Multilenguaje</h1>
-    </header>
+        </header>
 
-    <main class="container">
-        <section class="traductor-area">
+    <main class="contenedor-principal">
+        <section class="area-traductor">
             <div class="selectores">
                 <select id="idioma-origen" aria-label="Idioma Origen"></select>
                 <button id="boton-intercambio" title="Intercambiar Idiomas">🔄</button>
@@ -20,27 +20,27 @@
             </div>
 
             <div class="cajas-texto">
-                <textarea id="texto-input" placeholder="Introduce el texto a traducir aquí..."></textarea>
+                <textarea id="texto-entrada" placeholder="Introduce el texto a traducir aquí..."></textarea>
                 
-                <div id="resultado-output" aria-live="polite">
+                <div id="resultado-salida" aria-live="polite">
                     La traducción aparecerá aquí.
                 </div>
             </div>
 
             <div class="controles">
                 <button id="boton-traducir">Traducir</button>
-                <p id="estado-mensaje" class="hidden" role="alert"></p>
+                <p id="mensaje-estado" class="oculto" role="alert"></p>
             </div>
         </section>
 
-        <section class="historial-area">
+        <section class="area-historial">
             <h2>Historial de Traducciones</h2>
-            <div class="historial-controles">
-                <button id="boton-limpiar-historial" class="secondary-btn">Limpiar Historial</button>
+            <div class="controles-historial">
+                <button id="boton-limpiar-historial" class="btn-secundario">Limpiar Historial</button>
             </div>
             
             <ul id="lista-historial">
-                <li class="placeholder">Aún no hay traducciones.</li>
+                <li class="marcador">Aún no hay traducciones.</li>
             </ul>
         </section>
     </main>
