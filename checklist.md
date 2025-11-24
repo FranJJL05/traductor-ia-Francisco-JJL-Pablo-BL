@@ -14,7 +14,7 @@
 - [X] Crear estructura de carpetas `/backend` y `/frontend`
 - [X] Añadir `.gitignore`
 - [X] Crear `.env.example` y `.env`
-- [ ] Verificar instalación de Node.js, Docker y Ollama
+- [x] Verificar instalación de Node.js, Docker y Ollama
 
 ---
 
@@ -43,15 +43,15 @@
 - [x] Endpoint `GET /api/languages`
 
 ### 2.4 `backend/services.js`
-- [ ] Función `traducir()`
-- [ ] Función `obtenerHistorial()`
-- [ ] Función `obtenerTraduccionPorId()`
-- [ ] Función `eliminarTraduccion()`
-- [ ] Función `limpiarHistorial()`
-- [ ] Función `validarIdioma()`
-- [ ] Integrar con **Ollama API**
-- [ ] Insertar traducción en BD
-- [ ] Manejar validaciones y errores
+- [x] Función `traducir()`
+- [x] Función `obtenerHistorial()`
+- [x] Función `obtenerTraduccionPorId()`
+- [x] Función `eliminarTraduccion()`
+- [x] Función `limpiarHistorial()`
+- [x] Función `validarIdioma()`
+- [x] Integrar con **Ollama API**
+- [x] Insertar traducción en BD
+- [x] Manejar validaciones y errores
 
 ---
 
@@ -85,13 +85,13 @@
 ## 🧪 Parte 4: Validación y Tests (Persona A)
 
 - [ ] Crear `validacion.http`
-- [ ] Test `GET /api/health`
-- [ ] Test `POST /api/translate`
-- [ ] Test con errores (texto vacío, idiomas iguales)
-- [ ] Test `GET /api/translations`
-- [ ] Test `GET /api/languages`
-- [ ] Test `DELETE /api/translations/:id`
-- [ ] Test `DELETE /api/translations`
+- [x] Test `GET /api/health`
+- [x] Test `POST /api/translate`
+- [x] Test con errores (texto vacío, idiomas iguales)
+- [x] Test `GET /api/translations`
+- [x] Test `GET /api/languages`
+- [x] Test `DELETE /api/translations/:id`
+- [x] Test `DELETE /api/translations`
 
 ---
 
