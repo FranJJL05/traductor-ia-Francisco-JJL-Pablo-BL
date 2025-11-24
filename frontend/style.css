@@ -1,50 +1,42 @@
-/* --------------------------------
-    RESET
------------------------------------ */
+/* RESETEO BÁSICO */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* --------------------------------
-    PALETA
------------------------------------ */
+/* VARIABLES DE COLORES */
 :root {
-    /* Fondo degradado profundo */
-    --gradiente-fondo: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+    /* Fondo */
+    --fondo-degradado: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
 
-    /* Texto */
-    --texto-principal: #ffffff;
-    --texto-apagado: #e0e0e0;
+    /* Textos */
+    --texto-blanco: #ffffff;
+    --texto-gris: #e0e0e0;
 
-    /* Efecto Glass */
-    --glass-fondo: rgba(255, 255, 255, 0.1);
-    --glass-borde: rgba(255, 255, 255, 0.2);
-    --glass-sombra: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
-    --glass-desenfoque: blur(12px);
+    /* Tarjetas con degradado */
+    --tarjeta-fondo: linear-gradient(135deg, rgba(30, 30, 50, 0.9) 0%, rgba(20, 30, 60, 0.9) 100%);
+    --tarjeta-borde: rgba(255, 255, 255, 0.2);
+    --tarjeta-sombra: 0 8px 32px rgba(0, 0, 0, 0.37);
 
-    /* Acentos (Colores Principales) */
-    --primario: #e94560;
-    /* Rosa neón / Rojo vibrante */
-    --primario-hover: #ff2e63;
+    /* Botón principal */
+    --boton-principal: #e94560;
+    --boton-principal-hover: #ff2e63;
 
-    --secundario: rgba(255, 255, 255, 0.05);
-    --secundario-hover: rgba(255, 255, 255, 0.15);
+    /* Botón secundario */
+    --boton-secundario: rgba(255, 255, 255, 0.05);
+    --boton-secundario-hover: rgba(255, 255, 255, 0.15);
 
-    --radio-borde: 16px;
-    --transicion: 0.3s ease;
+    /* Otros */
+    --borde-redondeado: 16px;
 }
 
-/* --------------------------------
-    BASE
------------------------------------ */
+/* ESTILOS GENERALES */
 body {
-    font-family: "Outfit", "Inter", system-ui, sans-serif;
-    background: var(--gradiente-fondo);
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--fondo-degradado);
     background-attachment: fixed;
-    /* Para que el degradado no se corte al scrollear */
-    color: var(--texto-principal);
+    color: var(--texto-blanco);
     line-height: 1.6;
     padding: 40px 20px;
     min-height: 100vh;
@@ -53,12 +45,14 @@ body {
 header {
     text-align: center;
     margin-bottom: 50px;
-
 }
 
-/* --------------------------------
-    GRID
------------------------------------ */
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* LAYOUT CON GRID */
 .contenedor-principal {
     display: grid;
     grid-template-columns: 1.8fr 1fr;
@@ -67,42 +61,24 @@ header {
     margin: 0 auto;
 }
 
-@media (max-width: 920px) {
-    .contenedor-principal {
-        grid-template-columns: 1fr;
-    }
-}
-
-/* --------------------------------
-    TARJETAS (GLASS)
------------------------------------ */
+/* TARJETAS */
 .area-traductor,
 .area-historial {
-    background: var(--glass-fondo);
-    backdrop-filter: var(--glass-desenfoque);
-    -webkit-backdrop-filter: var(--glass-desenfoque);
-    border: 1px solid var(--glass-borde);
-    border-radius: var(--radio-borde);
+    background: var(--tarjeta-fondo);
+    border: 1px solid var(--tarjeta-borde);
+    border-radius: var(--borde-redondeado);
     padding: 30px;
-    box-shadow: var(--glass-sombra);
-    transition: transform var(--transicion);
-}
-
-.area-traductor:hover,
-.area-historial:hover {
-    transform: translateY(-2px);
+    box-shadow: var(--tarjeta-sombra);
 }
 
 .area-historial h2 {
     margin-bottom: 20px;
     font-size: 1.5rem;
-    border-bottom: 1px solid var(--glass-borde);
+    border-bottom: 1px solid var(--tarjeta-borde);
     padding-bottom: 10px;
 }
 
-/* --------------------------------
-    SELECTORES
------------------------------------ */
+/* SELECTORES DE IDIOMA */
 .selectores {
     display: flex;
     gap: 15px;
@@ -113,20 +89,13 @@ select {
     flex: 1;
     padding: 14px;
     font-size: 1rem;
-    border-radius: var(--radio-borde);
-    border: 1px solid var(--glass-borde);
+    border-radius: var(--borde-redondeado);
+    border: 1px solid var(--tarjeta-borde);
     background: rgba(0, 0, 0, 0.2);
-    color: var(--texto-principal);
+    color: var(--texto-blanco);
     cursor: pointer;
-    outline: none;
-    transition: border-color var(--transicion);
 }
 
-select:focus {
-    border-color: var(--primario);
-}
-
-/* Opciones del select (los navegadores limitan el estilo aquí, pero intentamos dark) */
 select option {
     background: #16213e;
     color: white;
@@ -134,42 +103,29 @@ select option {
 
 #boton-intercambio {
     padding: 0 20px;
-    border-radius: var(--radio-borde);
-    background: var(--secundario);
-    border: 1px solid var(--glass-borde);
+    border-radius: var(--borde-redondeado);
+    background: var(--boton-secundario);
+    border: 1px solid var(--tarjeta-borde);
+    color: var(--texto-blanco);
     cursor: pointer;
     font-size: 1.2rem;
-    transition: var(--transicion);
-    color: var(--texto-principal);
 }
 
 #boton-intercambio:hover {
-    background: var(--secundario-hover);
-    transform: rotate(180deg);
+    background: var(--boton-secundario-hover);
 }
 
-/* --------------------------------
-    CAJAS DE TEXTO
------------------------------------ */
+/* ÁREAS DE TEXTO */
 #texto-entrada {
     width: 100%;
     min-height: 180px;
     padding: 20px;
-    border-radius: var(--radio-borde);
-    border: 1px solid var(--glass-borde);
+    border-radius: var(--borde-redondeado);
+    border: 1px solid var(--tarjeta-borde);
     background: rgba(0, 0, 0, 0.2);
-    color: var(--texto-principal);
-    resize: vertical;
+    color: var(--texto-blanco);
     font-size: 1.1rem;
     margin-bottom: 25px;
-    outline: none;
-    font-family: inherit;
-    transition: border-color var(--transicion), background var(--transicion);
-}
-
-#texto-entrada:focus {
-    border-color: var(--primario);
-    background: rgba(0, 0, 0, 0.3);
 }
 
 #texto-entrada::placeholder {
@@ -179,57 +135,62 @@ select option {
 #resultado-salida {
     min-height: 180px;
     padding: 20px;
-    border-radius: var(--radio-borde);
+    border-radius: var(--borde-redondeado);
     background: rgba(255, 255, 255, 0.05);
-    /* Ligeramente más claro para diferenciar */
-    border: 1px solid var(--glass-borde);
+    border: 1px solid var(--tarjeta-borde);
     margin-bottom: 25px;
     font-size: 1.1rem;
-    line-height: 1.6;
-    color: var(--texto-apagado);
+    color: var(--texto-gris);
 }
 
-/* --------------------------------
-    BOTONES PRIMARIOS
------------------------------------ */
+/* BOTONES */
 #boton-traducir {
     width: 100%;
     padding: 16px;
     border: none;
-    background: var(--primario);
+    background: var(--boton-principal);
     color: white;
     font-size: 1.2rem;
     font-weight: 700;
-    border-radius: var(--radio-borde);
+    border-radius: var(--borde-redondeado);
     cursor: pointer;
-    transition: var(--transicion);
-    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
     text-transform: uppercase;
     letter-spacing: 1px;
 }
 
 #boton-traducir:hover {
-    background: var(--primario-hover);
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6);
-}
-
-#boton-traducir:active {
-    transform: translateY(-1px);
+    background: var(--boton-principal-hover);
 }
 
 #boton-traducir:disabled {
     background: #555;
-    cursor: not-allowed;
-    box-shadow: none;
 }
 
-/* Mensaje de estado */
+.btn-secundario {
+    padding: 10px 16px;
+    border-radius: var(--borde-redondeado);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--tarjeta-borde);
+    color: var(--texto-gris);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.btn-secundario:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+/* MENSAJES DE ESTADO */
 #mensaje-estado {
     margin-top: 15px;
     text-align: center;
     font-weight: 500;
     min-height: 24px;
+}
+
+.oculto {
+    display: none;
 }
 
 .mensaje-estado.error {
@@ -244,28 +205,7 @@ select option {
     color: #ffd43b;
 }
 
-/* --------------------------------
-    BOTONES SECUNDARIOS Y LIMPIEZA
------------------------------------ */
-.btn-secundario {
-    padding: 10px 16px;
-    border-radius: var(--radio-borde);
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid var(--glass-borde);
-    cursor: pointer;
-    color: var(--texto-apagado);
-    font-size: 0.9rem;
-    transition: var(--transicion);
-}
-
-.btn-secundario:hover {
-    background: rgba(255, 255, 255, 0.2);
-    color: white;
-}
-
-/* --------------------------------
-    HISTORIAL
------------------------------------ */
+/* HISTORIAL */
 .controles-historial {
     display: flex;
     justify-content: flex-end;
@@ -276,48 +216,31 @@ select option {
     list-style: none;
     max-height: 400px;
     overflow-y: auto;
-    padding-right: 5px;
-    /* Espacio para scrollbar */
-}
-
-/* Scrollbar personalizada para el historial */
-#lista-historial::-webkit-scrollbar {
-    width: 6px;
-}
-
-#lista-historial::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-#lista-historial::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.2);
-    border-radius: 10px;
 }
 
 #lista-historial li {
     padding: 15px;
-    border-radius: var(--radio-borde);
+    border-radius: var(--borde-redondeado);
     background: rgba(0, 0, 0, 0.2);
     border: 1px solid transparent;
     margin-bottom: 12px;
-    transition: var(--transicion);
     position: relative;
 }
 
 #lista-historial li:hover {
     background: rgba(0, 0, 0, 0.3);
-    border-color: var(--glass-borde);
+    border-color: var(--tarjeta-borde);
 }
 
 .historial-texto {
     font-weight: 600;
-    color: var(--texto-principal);
+    color: var(--texto-blanco);
     margin-bottom: 4px;
 }
 
 .historial-resultado {
     font-size: 0.95rem;
-    color: var(--texto-apagado);
+    color: var(--texto-gris);
 }
 
 .boton-eliminar {
@@ -329,12 +252,10 @@ select option {
     cursor: pointer;
     font-size: 1.1rem;
     opacity: 0.6;
-    transition: 0.2s;
 }
 
 .boton-eliminar:hover {
     opacity: 1;
-    transform: scale(1.1);
 }
 
 .marcador {
@@ -342,4 +263,53 @@ select option {
     color: rgba(255, 255, 255, 0.3);
     font-style: italic;
     padding: 20px;
+}
+
+/* RESPONSIVE: MÓVILES */
+@media (max-width: 920px) {
+
+    /* Layout a una columna */
+    .contenedor-principal {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    /* Menos padding en el body */
+    body {
+        padding: 20px 15px;
+    }
+
+    /* Título más pequeño */
+    header {
+        margin-bottom: 30px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    /* Tarjetas con menos padding */
+    .area-traductor,
+    .area-historial {
+        padding: 20px;
+    }
+
+    /* Selectores en columna */
+    .selectores {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Botón de intercambio a ancho completo */
+    #boton-intercambio {
+        width: 100%;
+        padding: 12px;
+    }
+
+    /* Áreas de texto más pequeñas */
+    #texto-entrada,
+    #resultado-salida {
+        min-height: 120px;
+        font-size: 1rem;
+    }
 }
