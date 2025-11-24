@@ -1,0 +1,38 @@
+### 1. Traducir un Texto (POST /translate)
+# Simula la llamada principal que realiza tu botón "Traducir".
+# El backend debe responder con un JSON que contenga el campo "texto_salida".
+POST http://localhost:3000/api/translate
+Content-Type: application/json
+
+{
+    "texto_entrada": "¿Qué tan pronto puedo esperar una respuesta?",
+    "idioma_origen": "es",
+    "idioma_destino": "de"
+}
+
+---
+
+### 2. Obtener todo el Historial (GET /translations)
+# Simula la llamada que realiza tu función cargarHistorial() al inicio.
+# El backend debe responder con una lista de traducciones (incluso si está vacía).
+GET http://localhost:3000/api/translations
+
+---
+
+### 3. Eliminar todo el Historial (DELETE /translations)
+# Simula la llamada que realiza tu botón "Limpiar Historial".
+DELETE http://localhost:3000/api/translations
+
+---
+
+### 4. Eliminar una Traducción Específica (DELETE /translations/:id)
+# Simula la eliminación de un elemento individual del historial.
+# NOTA: Debes reemplazar '1' con un ID existente en tu base de datos de pruebas.
+DELETE http://localhost:3000/api/translations/1
+
+---
+
+### 5. (Opcional) Endpoint para listar Idiomas (GET /languages)
+# Aunque usas una lista fija en el frontend, el backend debe tener esta ruta lista
+# en caso de que necesiten ampliar la lista de idiomas en el futuro.
+GET http://localhost:3000/api/languages
