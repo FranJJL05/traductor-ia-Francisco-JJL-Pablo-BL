@@ -27,20 +27,20 @@
 - [x] Exportar instancia de BD
 
 ### 2.2 `backend/server.js`
-- [ ] Importar `express`, `cors`, `dotenv`
-- [ ] Configurar middlewares
-- [ ] Importar `routes.js`
-- [ ] Manejar errores 404 y globales
-- [ ] Levantar servidor con puerto del `.env`
+- [x] Importar `express`, `cors`, `dotenv`
+- [x] Configurar middlewares
+- [x] Importar `routes.js`
+- [x] Manejar errores 404 y globales
+- [x] Levantar servidor con puerto del `.env`
 
 ### 2.3 `backend/routes.js`
-- [ ] Endpoint `GET /api/health`
-- [ ] Endpoint `POST /api/translate`
-- [ ] Endpoint `GET /api/translations`
-- [ ] Endpoint `GET /api/translations/:id`
-- [ ] Endpoint `DELETE /api/translations/:id`
-- [ ] Endpoint `DELETE /api/translations`
-- [ ] Endpoint `GET /api/languages`
+- [x] Endpoint `GET /api/health`
+- [x] Endpoint `POST /api/translate`
+- [x] Endpoint `GET /api/translations`
+- [x] Endpoint `GET /api/translations/:id`
+- [x] Endpoint `DELETE /api/translations/:id`
+- [x] Endpoint `DELETE /api/translations`
+- [x] Endpoint `GET /api/languages`
 
 ### 2.4 `backend/services.js`
 - [ ] Función `traducir()`

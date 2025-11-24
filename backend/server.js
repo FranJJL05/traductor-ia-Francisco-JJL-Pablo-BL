@@ -11,11 +11,14 @@ import "./db.js";
 // 🔹 Importar rutas
 import router from "./routes.js";
 
+// DEBUG: verificar carga del router
+console.log(">> Router cargado correctamente <<");
+
 // 🔹 Servidor
 const app = express();
 
 const PORT = process.env.PORT || 3002;
-const HOST = process.env.HOST || "0.0.0.0";
+const HOST = process.env.HOST || "localhost";
 
 // 🔹 Middlewares
 app.use(cors());

@@ -1,7 +1,7 @@
 // backend/services.js
 import db from "./db.js";
 
-// Idiomas soportados
+// Idiomas permitidos
 export const SUPPORTED_LANGS = ["es", "de", "zh"];
 
 // Validar idioma
@@ -22,7 +22,7 @@ export function validarTexto(text) {
   }
 }
 
-// Guardar traducción en BD
+// Guardar traducción en BD SQLite
 function guardarTraduccion(data) {
   const stmt = db.prepare(`
     INSERT INTO traducciones 
@@ -56,12 +56,25 @@ export async function traducir({ text, sourceLang, targetLang }) {
   const API_URL = process.env.AI_API_URL;
   const MODEL = process.env.AI_MODEL || "mistral:7b";
 
-  const prompt = `Traduce este texto del idioma ${sourceLang} al idioma ${targetLang}.
-Devuelve únicamente la traducción, sin explicaciones:
+  // --------------------------------------------------
+  // PROMPT ULTRA RESTRICTIVO PARA MODELOS PEQUEÑOS
+  // --------------------------------------------------
+  const prompt = `
+Traduce el siguiente texto del idioma ${sourceLang} al idioma ${targetLang}.
+Debe cumplirse estrictamente lo siguiente:
 
-"${text}"`;
+- Responde SOLO con la traducción en ${targetLang}.
+- NO añadas explicaciones.
+- NO traduzcas a ningún otro idioma.
+- NO añadas notas, paréntesis, ejemplos, comentarios.
+- NO añadas el texto original.
+- Devuelve SOLO la frase traducida.
 
-  const requestBody = {
+Texto a traducir:
+"${text}"
+  `;
+
+  const body = {
     model: MODEL,
     prompt,
     stream: false
@@ -72,25 +85,40 @@ Devuelve únicamente la traducción, sin explicaciones:
   const response = await fetch(`${API_URL}/api/generate`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(requestBody),
-    signal: AbortSignal.timeout(30000) // timeout sencillo
+    body: JSON.stringify(body),
+    signal: AbortSignal.timeout(45000) // timeout de 45s
   });
 
   const duration_ms = Date.now() - start;
 
   if (!response.ok) {
     const msg = await response.text();
-    throw new Error(`Error llamando a la IA: ${msg}`);
+    throw new Error(`Error llamando al modelo: ${msg}`);
   }
 
   const json = await response.json();
 
-  const translated =
+  let translated =
     json.response ||
     json.text ||
     json.output ||
     "";
 
+  // --------------------------------------------------
+  // LIMPIEZA AUTOMÁTICA DE RESPUESTAS INCÓMODAS
+  // --------------------------------------------------
+  translated = translated
+    .replace(/\(.*?\)/g, "")                 // eliminar "(Alemán)", "(Francés)"...
+    .replace(/^[\s\n]+|[\s\n]+$/g, "")       // recortar espacios y saltos
+    .replace(/Traducción:/gi, "")            // quitar etiquetas típicas
+    .replace(/^\s*[-•]\s*/g, "")             // quitar viñetas
+    .trim();
+
+  if (!translated || translated.length < 1) {
+    throw new Error("La IA devolvió una traducción vacía.");
+  }
+
+  // Guardar traducción limpia en BD
   const saved = guardarTraduccion({
     texto_original: text,
     texto_traducido: translated,
@@ -103,7 +131,7 @@ Devuelve únicamente la traducción, sin explicaciones:
   return saved;
 }
 
-// Obtener historial (con filtros opcionales)
+// Obtener historial
 export function obtenerHistorial({ sourceLang, targetLang, limit = 50 }) {
   let query = "SELECT * FROM traducciones";
   const params = [];

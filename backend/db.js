@@ -1,28 +1,27 @@
 // backend/db.js
-const path = require('path');
-const fs = require('fs');
-const Database = require('better-sqlite3');
+import path from "path";
+import fs from "fs";
+import Database from "better-sqlite3";
+import { fileURLToPath } from "url";
 
-// Ruta a la carpeta db/
-const dbDirectory = path.join(__dirname, 'db');
+// Necesario en ES Modules para __dirname
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-// Crear carpeta backend/db/ si no existe
+// Crear carpeta db/ si no existe
+const dbDirectory = path.join(__dirname, "db");
 if (!fs.existsSync(dbDirectory)) {
   fs.mkdirSync(dbDirectory, { recursive: true });
 }
 
-// Ruta al archivo de base de datos
-const dbPath = path.join(dbDirectory, 'traducciones.db');
-
 // Crear/abrir base de datos
+const dbPath = path.join(dbDirectory, "traducciones.db");
 const db = new Database(dbPath);
 
-// Activar claves foráneas (opcional pero recomendado)
-db.pragma('foreign_keys = ON');
+// Activar claves foráneas
+db.pragma("foreign_keys = ON");
 
-// -------------------------------------------------------
-// 📌 CREACIÓN DE TABLAS AUTOMÁTICA
-// -------------------------------------------------------
+// Crear tabla si no existe
 const createTableSQL = `
 CREATE TABLE IF NOT EXISTS traducciones (
   id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -38,6 +37,7 @@ CREATE TABLE IF NOT EXISTS traducciones (
 
 db.exec(createTableSQL);
 
-// Exportar instancia
-module.exports = db;
+// Export ESM
+export default db;
+
 
