@@ -8,47 +8,52 @@
 }
 
 /* --------------------------------
-    PALETA (MODO CLARO - FIJO)
+    PALETA
 ----------------------------------- */
 :root {
-    --bg: #f8f9fb;
-    --text: #1a1a1a;
+    /* Fondo degradado profundo */
+    --gradiente-fondo: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
 
-    --card: #ffffff;
-    --border: #dedede;
+    /* Texto */
+    --texto-principal: #ffffff;
+    --texto-apagado: #e0e0e0;
 
-    --secondary: #f2f3f5;
-    --secondary-hover: #e6e7eb;
+    /* Efecto Glass */
+    --glass-fondo: rgba(255, 255, 255, 0.1);
+    --glass-borde: rgba(255, 255, 255, 0.2);
+    --glass-sombra: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    --glass-desenfoque: blur(12px);
 
-    --primary: #4f8bff;
-    --primary-hover: #3b6fe6;
+    /* Acentos (Colores Principales) */
+    --primario: #e94560;
+    /* Rosa neón / Rojo vibrante */
+    --primario-hover: #ff2e63;
 
-    --radius: 14px;
-    --shadow: 0 3px 12px rgba(0,0,0,0.06);
+    --secundario: rgba(255, 255, 255, 0.05);
+    --secundario-hover: rgba(255, 255, 255, 0.15);
 
-    --transition: 0.3s ease;
+    --radio-borde: 16px;
+    --transicion: 0.3s ease;
 }
 
 /* --------------------------------
     BASE
 ----------------------------------- */
 body {
-    font-family: "Inter", system-ui, sans-serif;
-    background: var(--bg);
-    color: var(--text);
+    font-family: "Outfit", "Inter", system-ui, sans-serif;
+    background: var(--gradiente-fondo);
+    background-attachment: fixed;
+    /* Para que el degradado no se corte al scrollear */
+    color: var(--texto-principal);
     line-height: 1.6;
-    padding: 20px;
-    transition: background var(--transition), color var(--transition);
+    padding: 40px 20px;
+    min-height: 100vh;
 }
 
 header {
     text-align: center;
-    margin-bottom: 40px;
-}
+    margin-bottom: 50px;
 
-header h1 {
-    font-size: 2.3rem;
-    font-weight: 700;
 }
 
 /* --------------------------------
@@ -56,8 +61,10 @@ header h1 {
 ----------------------------------- */
 .contenedor-principal {
     display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 30px; 
+    grid-template-columns: 1.8fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 @media (max-width: 920px) {
@@ -67,16 +74,30 @@ header h1 {
 }
 
 /* --------------------------------
-    TARJETAS
+    TARJETAS (GLASS)
 ----------------------------------- */
 .area-traductor,
 .area-historial {
-    background: var(--card);
-    padding: 26px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    box-shadow: var(--shadow);
-    transition: background var(--transition), border var(--transition);
+    background: var(--glass-fondo);
+    backdrop-filter: var(--glass-desenfoque);
+    -webkit-backdrop-filter: var(--glass-desenfoque);
+    border: 1px solid var(--glass-borde);
+    border-radius: var(--radio-borde);
+    padding: 30px;
+    box-shadow: var(--glass-sombra);
+    transition: transform var(--transicion);
+}
+
+.area-traductor:hover,
+.area-historial:hover {
+    transform: translateY(-2px);
+}
+
+.area-historial h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    border-bottom: 1px solid var(--glass-borde);
+    padding-bottom: 10px;
 }
 
 /* --------------------------------
@@ -84,31 +105,47 @@ header h1 {
 ----------------------------------- */
 .selectores {
     display: flex;
-    gap: 14px;
-    margin-bottom: 20px; 
+    gap: 15px;
+    margin-bottom: 25px;
 }
 
 select {
     flex: 1;
-    padding: 12px;
+    padding: 14px;
     font-size: 1rem;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    background: var(--card);
-    color: var(--text);
+    border-radius: var(--radio-borde);
+    border: 1px solid var(--glass-borde);
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--texto-principal);
     cursor: pointer;
+    outline: none;
+    transition: border-color var(--transicion);
+}
+
+select:focus {
+    border-color: var(--primario);
+}
+
+/* Opciones del select (los navegadores limitan el estilo aquí, pero intentamos dark) */
+select option {
+    background: #16213e;
+    color: white;
 }
 
 #boton-intercambio {
-    padding: 12px 16px;
-    border-radius: var(--radius);
-    background: var(--secondary);
-    border: 1px solid var(--border);
+    padding: 0 20px;
+    border-radius: var(--radio-borde);
+    background: var(--secundario);
+    border: 1px solid var(--glass-borde);
     cursor: pointer;
-    transition: 0.25s;
+    font-size: 1.2rem;
+    transition: var(--transicion);
+    color: var(--texto-principal);
 }
+
 #boton-intercambio:hover {
-    background: var(--secondary-hover);
+    background: var(--secundario-hover);
+    transform: rotate(180deg);
 }
 
 /* --------------------------------
@@ -116,25 +153,40 @@ select {
 ----------------------------------- */
 #texto-entrada {
     width: 100%;
-    min-height: 160px;
-    padding: 16px;
-    border-radius: var(--radius);
-    border: 1px solid var(--border);
-    background: var(--card);
-    color: var(--text);
+    min-height: 180px;
+    padding: 20px;
+    border-radius: var(--radio-borde);
+    border: 1px solid var(--glass-borde);
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--texto-principal);
     resize: vertical;
-    font-size: 1rem;
-    margin-bottom: 20px; 
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+    outline: none;
+    font-family: inherit;
+    transition: border-color var(--transicion), background var(--transicion);
+}
+
+#texto-entrada:focus {
+    border-color: var(--primario);
+    background: rgba(0, 0, 0, 0.3);
+}
+
+#texto-entrada::placeholder {
+    color: rgba(255, 255, 255, 0.4);
 }
 
 #resultado-salida {
-    min-height: 160px;
-    padding: 16px;
-    border-radius: var(--radius);
-    background: var(--secondary);
-    border: 1px solid var(--border);
-    overflow-y: auto;
-    margin-bottom: 20px; 
+    min-height: 180px;
+    padding: 20px;
+    border-radius: var(--radio-borde);
+    background: rgba(255, 255, 255, 0.05);
+    /* Ligeramente más claro para diferenciar */
+    border: 1px solid var(--glass-borde);
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--texto-apagado);
 }
 
 /* --------------------------------
@@ -142,59 +194,152 @@ select {
 ----------------------------------- */
 #boton-traducir {
     width: 100%;
-    padding: 14px;
+    padding: 16px;
     border: none;
-    background: var(--primary);
-    color: white; 
-    font-size: 1.1rem;
-    font-weight: 600;
-    border-radius: var(--radius);
+    background: var(--primario);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: var(--radio-borde);
     cursor: pointer;
-    transition: background var(--transition), transform 0.15s;
-    margin-bottom: 25px; 
+    transition: var(--transicion);
+    box-shadow: 0 4px 15px rgba(233, 69, 96, 0.4);
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 #boton-traducir:hover {
-    background: var(--primary-hover);
-    transform: translateY(-2px);
+    background: var(--primario-hover);
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(233, 69, 96, 0.6);
+}
+
+#boton-traducir:active {
+    transform: translateY(-1px);
+}
+
+#boton-traducir:disabled {
+    background: #555;
+    cursor: not-allowed;
+    box-shadow: none;
+}
+
+/* Mensaje de estado */
+#mensaje-estado {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: 500;
+    min-height: 24px;
+}
+
+.mensaje-estado.error {
+    color: #ff6b6b;
+}
+
+.mensaje-estado.exito {
+    color: #51cf66;
+}
+
+.mensaje-estado.cargando {
+    color: #ffd43b;
 }
 
 /* --------------------------------
     BOTONES SECUNDARIOS Y LIMPIEZA
 ----------------------------------- */
 .btn-secundario {
-    padding: 9px 13px;
-    border-radius: var(--radius);
-    background: var(--secondary);
-    border: 1px solid var(--border);
+    padding: 10px 16px;
+    border-radius: var(--radio-borde);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--glass-borde);
     cursor: pointer;
-    transition: background var(--transition);
-    /* El texto aquí usará el color por defecto (var(--text)) */
+    color: var(--texto-apagado);
+    font-size: 0.9rem;
+    transition: var(--transicion);
 }
 
 .btn-secundario:hover {
-    background: var(--secondary-hover);
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
 }
 
 /* --------------------------------
     HISTORIAL
 ----------------------------------- */
+.controles-historial {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
 #lista-historial {
     list-style: none;
-    max-height: 360px;
+    max-height: 400px;
     overflow-y: auto;
-    margin-top: 15px;
+    padding-right: 5px;
+    /* Espacio para scrollbar */
+}
+
+/* Scrollbar personalizada para el historial */
+#lista-historial::-webkit-scrollbar {
+    width: 6px;
+}
+
+#lista-historial::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+#lista-historial::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 10px;
 }
 
 #lista-historial li {
-    padding: 12px;
-    border-radius: var(--radius);
-    background: var(--card);
-    border: 1px solid var(--border);
+    padding: 15px;
+    border-radius: var(--radio-borde);
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid transparent;
     margin-bottom: 12px;
-    transition: background var(--transition);
+    transition: var(--transicion);
+    position: relative;
 }
 
 #lista-historial li:hover {
-    background: var(--secondary);
+    background: rgba(0, 0, 0, 0.3);
+    border-color: var(--glass-borde);
+}
+
+.historial-texto {
+    font-weight: 600;
+    color: var(--texto-principal);
+    margin-bottom: 4px;
+}
+
+.historial-resultado {
+    font-size: 0.95rem;
+    color: var(--texto-apagado);
+}
+
+.boton-eliminar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    opacity: 0.6;
+    transition: 0.2s;
+}
+
+.boton-eliminar:hover {
+    opacity: 1;
+    transform: scale(1.1);
+}
+
+.marcador {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.3);
+    font-style: italic;
+    padding: 20px;
 }
