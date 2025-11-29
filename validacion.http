@@ -1,38 +1,41 @@
-### 1. Traducir un Texto (POST /translate)
-# Simula la llamada principal que realiza tu botón "Traducir".
-# El backend debe responder con un JSON que contenga el campo "texto_salida".
-POST http://localhost:3000/api/translate
+### 1. Comprobar estado del servidor (Health Check)
+GET http://localhost:3005/api/health
+
+### 2. Obtener idiomas soportados
+GET http://localhost:3005/api/languages
+
+### 3. Traducir un texto (POST /translate)
+# El backend espera: { "text": "...", "sourceLang": "...", "targetLang": "..." }
+POST http://localhost:3005/api/translate
 Content-Type: application/json
 
 {
-    "texto_entrada": "¿Qué tan pronto puedo esperar una respuesta?",
-    "idioma_origen": "es",
-    "idioma_destino": "de"
+    "text": "¿Qué tan pronto puedo esperar una respuesta?",
+    "sourceLang": "es",
+    "targetLang": "de"
 }
 
----
+### 4. Intentar traducir con error (Faltan campos)
+POST http://localhost:3005/api/translate
+Content-Type: application/json
 
-### 2. Obtener todo el Historial (GET /translations)
-# Simula la llamada que realiza tu función cargarHistorial() al inicio.
-# El backend debe responder con una lista de traducciones (incluso si está vacía).
-GET http://localhost:3000/api/translations
+{
+    "text": "Hola"
+}
 
----
+### 5. Obtener historial de traducciones
+GET http://localhost:3005/api/translations
 
-### 3. Eliminar todo el Historial (DELETE /translations)
-# Simula la llamada que realiza tu botón "Limpiar Historial".
-DELETE http://localhost:3000/api/translations
+### 6. Obtener historial con filtros (opcional, si el backend lo soporta)
+GET http://localhost:3005/api/translations?limit=5
 
----
+### 7. Obtener una traducción específica por ID
+# Reemplaza el ID '1' por uno que exista realmente en tu base de datos después de traducir algo
+GET http://localhost:3005/api/translations/1
 
-### 4. Eliminar una Traducción Específica (DELETE /translations/:id)
-# Simula la eliminación de un elemento individual del historial.
-# NOTA: Debes reemplazar '1' con un ID existente en tu base de datos de pruebas.
-DELETE http://localhost:3000/api/translations/1
+### 8. Eliminar una traducción específica por ID
+# Reemplaza el ID '1' por uno que quieras borrar
+DELETE http://localhost:3005/api/translations/1
 
----
-
-### 5. (Opcional) Endpoint para listar Idiomas (GET /languages)
-# Aunque usas una lista fija en el frontend, el backend debe tener esta ruta lista
-# en caso de que necesiten ampliar la lista de idiomas en el futuro.
-GET http://localhost:3000/api/languages
+### 9. Limpiar todo el historial
+DELETE http://localhost:3005/api/translations

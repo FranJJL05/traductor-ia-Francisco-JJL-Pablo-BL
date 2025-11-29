@@ -84,7 +84,7 @@
 
 ## 🧪 Parte 4: Validación y Tests (Persona A)
 
-- [ ] Crear `validacion.http`
+- [X] Crear `validacion.http`
 - [x] Test `GET /api/health`
 - [x] Test `POST /api/translate`
 - [x] Test con errores (texto vacío, idiomas iguales)
