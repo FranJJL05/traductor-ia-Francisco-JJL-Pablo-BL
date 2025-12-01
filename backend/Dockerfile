@@ -1,5 +1,5 @@
 # Usar una imagen base de Node.js ligera (Alpine Linux) para reducir el tamaño final
-FROM node:20-alpine
+FROM node:20
 
 # Establecer el directorio de trabajo dentro del contenedor donde vivirá la app
 WORKDIR /app

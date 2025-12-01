@@ -25,7 +25,7 @@ Content-Type: application/json
 {
     "text": "Hello world",
     "sourceLang": "en",
-    "targetLang": "fr"
+    "targetLang": "zh"
 }
 
 ### 5. Obtener historial de traducciones
