@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  backend:
+    build: ./backend
+    ports:
+      - "3005:3005"
+    volumes:
+      - ./backend:/app
+      - /app/node_modules
+    environment:
+      - PORT=3005
+      - AI_API_URL=http://host.docker.internal:11520
