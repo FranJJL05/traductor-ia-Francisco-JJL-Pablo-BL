@@ -54,25 +54,43 @@ export async function traducir({ text, sourceLang, targetLang }) {
   }
 
   const API_URL = process.env.AI_API_URL;
-  const MODEL = process.env.AI_MODEL || "mistral:7b";
+  const MODEL = process.env.AI_MODEL || "qwen2.5:7b-instruct";
+
+  // Mapeo de códigos a nombres completos para mejor contexto
+  const LANGUAGE_NAMES = {
+    "es": "Español",
+    "en": "Inglés",
+    "de": "Alemán",
+    "fr": "Francés",
+    "it": "Italiano",
+    "pt": "Portugués",
+    "zh": "Chino Mandarín",
+    "ja": "Japonés",
+    "ru": "Ruso"
+  };
+
+  const sourceName = LANGUAGE_NAMES[sourceLang] || sourceLang;
+  const targetName = LANGUAGE_NAMES[targetLang] || targetLang;
 
   // --------------------------------------------------
   // PROMPT ULTRA RESTRICTIVO PARA MODELOS PEQUEÑOS
   // --------------------------------------------------
   const prompt = `
-Traduce el siguiente texto del idioma ${sourceLang} al idioma ${targetLang}.
-Debe cumplirse estrictamente lo siguiente:
+Actúa como una máquina de traducción estricta.
+Tu tarea es traducir el texto de entrada del ${sourceName} al ${targetName}.
 
-- Responde SOLO con la traducción en ${targetLang}.
-- NO añadas explicaciones.
-- NO traduzcas a ningún otro idioma.
-- NO añadas notas, paréntesis, ejemplos, comentarios.
-- NO añadas el texto original.
-- Devuelve SOLO la frase traducida.
+REGLAS ABSOLUTAS (síguelas estrictamente):
+1. Devuelve SOLAMENTE el texto traducido.
+2. NO incluyas comillas, ni "Traducción:", ni notas, ni explicaciones.
+3. Si la traducción es una sola palabra, devuelve solo esa palabra.
+4. Mantén el formato original (mayúsculas/minúsculas).
+5. NO traduzcas a ningún otro idioma que no sea ${targetName}.
 
 Texto a traducir:
-"${text}"
-  `;
+${text}
+
+Traducción:
+`;
 
   const body = {
     model: MODEL,
