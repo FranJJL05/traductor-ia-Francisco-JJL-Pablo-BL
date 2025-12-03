@@ -155,4 +155,4 @@
 - [x] Proyecto funcional  
 - [x] Documentación completa  
 - [x] Docker Compose validado  
-- [x] Entregado vía Pull Request
+- [x] Entregado vía Pull Request.
