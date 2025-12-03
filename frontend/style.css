@@ -1,0 +1,315 @@
+/* RESETEO BÁSICO */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* VARIABLES DE COLORES */
+:root {
+    /* Fondo */
+    --fondo-degradado: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+
+    /* Textos */
+    --texto-blanco: #ffffff;
+    --texto-gris: #e0e0e0;
+
+    /* Tarjetas con degradado */
+    --tarjeta-fondo: linear-gradient(135deg, rgba(30, 30, 50, 0.9) 0%, rgba(20, 30, 60, 0.9) 100%);
+    --tarjeta-borde: rgba(255, 255, 255, 0.2);
+    --tarjeta-sombra: 0 8px 32px rgba(0, 0, 0, 0.37);
+
+    /* Botón principal */
+    --boton-principal: #e94560;
+    --boton-principal-hover: #ff2e63;
+
+    /* Botón secundario */
+    --boton-secundario: rgba(255, 255, 255, 0.05);
+    --boton-secundario-hover: rgba(255, 255, 255, 0.15);
+
+    /* Otros */
+    --borde-redondeado: 16px;
+}
+
+/* ESTILOS GENERALES */
+body {
+    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+    background: var(--fondo-degradado);
+    background-attachment: fixed;
+    color: var(--texto-blanco);
+    line-height: 1.6;
+    padding: 40px 20px;
+    min-height: 100vh;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+/* LAYOUT CON GRID */
+.contenedor-principal {
+    display: grid;
+    grid-template-columns: 1.8fr 1fr;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* TARJETAS */
+.area-traductor,
+.area-historial {
+    background: var(--tarjeta-fondo);
+    border: 1px solid var(--tarjeta-borde);
+    border-radius: var(--borde-redondeado);
+    padding: 30px;
+    box-shadow: var(--tarjeta-sombra);
+}
+
+.area-historial h2 {
+    margin-bottom: 20px;
+    font-size: 1.5rem;
+    border-bottom: 1px solid var(--tarjeta-borde);
+    padding-bottom: 10px;
+}
+
+/* SELECTORES DE IDIOMA */
+.selectores {
+    display: flex;
+    gap: 15px;
+    margin-bottom: 25px;
+}
+
+select {
+    flex: 1;
+    padding: 14px;
+    font-size: 1rem;
+    border-radius: var(--borde-redondeado);
+    border: 1px solid var(--tarjeta-borde);
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--texto-blanco);
+    cursor: pointer;
+}
+
+select option {
+    background: #16213e;
+    color: white;
+}
+
+#boton-intercambio {
+    padding: 0 20px;
+    border-radius: var(--borde-redondeado);
+    background: var(--boton-secundario);
+    border: 1px solid var(--tarjeta-borde);
+    color: var(--texto-blanco);
+    cursor: pointer;
+    font-size: 1.2rem;
+}
+
+#boton-intercambio:hover {
+    background: var(--boton-secundario-hover);
+}
+
+/* ÁREAS DE TEXTO */
+#texto-entrada {
+    width: 100%;
+    min-height: 180px;
+    padding: 20px;
+    border-radius: var(--borde-redondeado);
+    border: 1px solid var(--tarjeta-borde);
+    background: rgba(0, 0, 0, 0.2);
+    color: var(--texto-blanco);
+    font-size: 1.1rem;
+    margin-bottom: 25px;
+}
+
+#texto-entrada::placeholder {
+    color: rgba(255, 255, 255, 0.4);
+}
+
+#resultado-salida {
+    min-height: 180px;
+    padding: 20px;
+    border-radius: var(--borde-redondeado);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--tarjeta-borde);
+    margin-bottom: 25px;
+    font-size: 1.1rem;
+    color: var(--texto-gris);
+}
+
+/* BOTONES */
+#boton-traducir {
+    width: 100%;
+    padding: 16px;
+    border: none;
+    background: var(--boton-principal);
+    color: white;
+    font-size: 1.2rem;
+    font-weight: 700;
+    border-radius: var(--borde-redondeado);
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#boton-traducir:hover {
+    background: var(--boton-principal-hover);
+}
+
+#boton-traducir:disabled {
+    background: #555;
+}
+
+.btn-secundario {
+    padding: 10px 16px;
+    border-radius: var(--borde-redondeado);
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid var(--tarjeta-borde);
+    color: var(--texto-gris);
+    font-size: 0.9rem;
+    cursor: pointer;
+}
+
+.btn-secundario:hover {
+    background: rgba(255, 255, 255, 0.2);
+    color: white;
+}
+
+/* MENSAJES DE ESTADO */
+#mensaje-estado {
+    margin-top: 15px;
+    text-align: center;
+    font-weight: 500;
+    min-height: 24px;
+}
+
+.oculto {
+    display: none;
+}
+
+.mensaje-estado.error {
+    color: #ff6b6b;
+}
+
+.mensaje-estado.exito {
+    color: #51cf66;
+}
+
+.mensaje-estado.cargando {
+    color: #ffd43b;
+}
+
+/* HISTORIAL */
+.controles-historial {
+    display: flex;
+    justify-content: flex-end;
+    margin-bottom: 15px;
+}
+
+#lista-historial {
+    list-style: none;
+    max-height: 400px;
+    overflow-y: auto;
+}
+
+#lista-historial li {
+    padding: 15px;
+    border-radius: var(--borde-redondeado);
+    background: rgba(0, 0, 0, 0.2);
+    border: 1px solid transparent;
+    margin-bottom: 12px;
+    position: relative;
+}
+
+#lista-historial li:hover {
+    background: rgba(0, 0, 0, 0.3);
+    border-color: var(--tarjeta-borde);
+}
+
+.historial-texto {
+    font-weight: 600;
+    color: var(--texto-blanco);
+    margin-bottom: 4px;
+}
+
+.historial-resultado {
+    font-size: 0.95rem;
+    color: var(--texto-gris);
+}
+
+.boton-eliminar {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.1rem;
+    opacity: 0.6;
+}
+
+.boton-eliminar:hover {
+    opacity: 1;
+}
+
+.marcador {
+    text-align: center;
+    color: rgba(255, 255, 255, 0.3);
+    font-style: italic;
+    padding: 20px;
+}
+
+/* RESPONSIVE: MÓVILES */
+@media (max-width: 920px) {
+
+    /* Layout a una columna */
+    .contenedor-principal {
+        grid-template-columns: 1fr;
+        gap: 25px;
+    }
+
+    /* Menos padding en el body */
+    body {
+        padding: 20px 15px;
+    }
+
+    /* Título más pequeño */
+    header {
+        margin-bottom: 30px;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    /* Tarjetas con menos padding */
+    .area-traductor,
+    .area-historial {
+        padding: 20px;
+    }
+
+    /* Selectores en columna */
+    .selectores {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    /* Botón de intercambio a ancho completo */
+    #boton-intercambio {
+        width: 100%;
+        padding: 12px;
+    }
+
+    /* Áreas de texto más pequeñas */
+    #texto-entrada,
+    #resultado-salida {
+        min-height: 120px;
+        font-size: 1rem;
+    }
+}

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Traductor IA Multilenguaje</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Traductor IA Multilenguaje</h1>
+        </header>
+
+    <main class="contenedor-principal">
+        <section class="area-traductor">
+            <div class="selectores">
+                <select id="idioma-origen" aria-label="Idioma Origen"></select>
+                <button id="boton-intercambio" title="Intercambiar Idiomas">🔄</button>
+                <select id="idioma-destino" aria-label="Idioma Destino"></select>
+            </div>
+
+            <div class="cajas-texto">
+                <textarea id="texto-entrada" placeholder="Introduce el texto a traducir aquí..."></textarea>
+                
+                <div id="resultado-salida" aria-live="polite">
+                    La traducción aparecerá aquí.
+                </div>
+            </div>
+
+            <div class="controles">
+                <button id="boton-traducir">Traducir</button>
+                <p id="mensaje-estado" class="oculto" role="alert"></p>
+            </div>
+        </section>
+
+        <section class="area-historial">
+            <h2>Historial de Traducciones</h2>
+            <div class="controles-historial">
+                <button id="boton-limpiar-historial" class="btn-secundario">Limpiar Historial</button>
+            </div>
+            
+            <ul id="lista-historial">
+                <li class="marcador">Aún no hay traducciones.</li>
+            </ul>
+        </section>
+    </main>
+
+    <script src="main.js"></script>
+</body>
+</html>

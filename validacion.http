@@ -1,0 +1,44 @@
+### Variables
+@port = 3005
+@host = http://localhost:{{port}}/api
+
+### 1. Health Check
+GET {{host}}/health
+
+### 2. Obtener idiomas soportados
+GET {{host}}/languages
+
+### 3. Traducir texto (Español -> Alemán)
+POST {{host}}/translate
+Content-Type: application/json
+
+{
+    "text": "Hola mundo, esto es una prueba",
+    "sourceLang": "es",
+    "targetLang": "de"
+}
+
+### 4. Traducir texto (Error: Idioma no soportado)
+POST {{host}}/translate
+Content-Type: application/json
+
+{
+    "text": "Hello world",
+    "sourceLang": "en",
+    "targetLang": "zh"
+}
+
+### 5. Obtener historial de traducciones
+GET {{host}}/translations
+
+### 6. Obtener historial filtrado (limit=2)
+GET {{host}}/translations?limit=2
+
+### 7. Obtener una traducción por ID (Reemplazar 1 con un ID real)
+GET {{host}}/translations/1
+
+### 8. Eliminar una traducción por ID (Reemplazar 1 con un ID real)
+DELETE {{host}}/translations/1
+
+### 9. Limpiar todo el historial
+DELETE {{host}}/translations
