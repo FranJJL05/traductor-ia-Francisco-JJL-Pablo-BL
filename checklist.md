@@ -58,27 +58,27 @@
 ## 🎨 Parte 3: Frontend - Persona B
 
 ### 3.1 `frontend/index.html`
-- [ ] Estructura HTML5 semántica
-- [ ] Input/textarea para texto
-- [ ] Selectores idioma origen/destino
-- [ ] Botones “Traducir” y “Limpiar”
-- [ ] Área para mostrar traducción
-- [ ] Área para historial
-- [ ] Indicadores de carga y errores
+- [x] Estructura HTML5 semántica
+- [x] Input/textarea para texto
+- [x] Selectores idioma origen/destino
+- [x] Botones “Traducir” y “Limpiar”
+- [x] Área para mostrar traducción
+- [x] Área para historial
+- [x] Indicadores de carga y errores
 
 ### 3.2 `frontend/style.css`
-- [ ] Layout responsivo
-- [ ] Estilos para carga/error
-- [ ] Diferenciar input, resultado e historial
-- [ ] Usabilidad clara y accesible
+- [x] Layout responsivo
+- [x] Estilos para carga/error
+- [x] Diferenciar input, resultado e historial
+- [x] Usabilidad clara y accesible
 
 ### 3.3 `frontend/main.js`
-- [ ] Manejar estado de aplicación
-- [ ] Fetch a `/api/translate`
-- [ ] Mostrar resultado en UI
-- [ ] Fetch a `/api/translations` (historial)
-- [ ] Permitir eliminar traducciones
-- [ ] Manejar errores de red y validaciones
+- [x] Manejar estado de aplicación
+- [x] Fetch a `/api/translate`
+- [x] Mostrar resultado en UI
+- [x] Fetch a `/api/translations` (historial)
+- [x] Permitir eliminar traducciones
+- [x] Manejar errores de red y validaciones
 
 ---
 
@@ -97,47 +97,47 @@
 
 ## 🐳 Parte 5: Dockerización (Ambos)
 
-- [ ] Crear `backend/Dockerfile`
-- [ ] Crear `docker-compose.yml`
-- [ ] Definir servicios: backend, ollama, frontend
-- [ ] Configurar redes y puertos
-- [ ] Probar `docker compose up --build`
-- [ ] Verificar acceso a `http://localhost:3000`
+- [x] Crear `backend/Dockerfile`
+- [x] Crear `docker-compose.yml`
+- [x] Definir servicios: backend, ollama, frontend
+- [x] Configurar redes y puertos
+- [x] Probar `docker compose up --build`
+- [x] Verificar acceso a `http://localhost:3000`
 
 ---
 
 ## 📖 Parte 6: Documentación (Ambos)
 
-- [ ] Crear `README.md` con:
-  - [ ] Descripción del proyecto
-  - [ ] Autores y roles
-  - [ ] Requisitos del sistema
-  - [ ] Instalación y ejecución
-  - [ ] API endpoints
-  - [ ] Decisiones de diseño
-  - [ ] Extensiones futuras
-- [ ] Completar `checklist.md`
+- [x] Crear `README.md` con:
+  - [x] Descripción del proyecto
+  - [x] Autores y roles
+  - [x] Requisitos del sistema
+  - [x] Instalación y ejecución
+  - [x] API endpoints
+  - [x] Decisiones de diseño
+  - [x] Extensiones futuras
+- [x] Completar `checklist.md`
 
 ---
 
 ## 🌿 Parte 7: Git y Control de Versiones (Ambos)
 
-- [ ] Commits incrementales y descriptivos
-- [ ] Rama `hito2/desarrollo-ia`
-- [ ] PR “Entrega: Traductor Inteligente con Ollama”
-- [ ] Co-authored commits con ambos nombres
-- [ ] Indicar claramente división de trabajo
+- [x] Commits incrementales y descriptivos
+- [x] Rama `hito2/desarrollo-ia`
+- [x] PR “Entrega: Traductor Inteligente con Ollama”
+- [x] Co-authored commits con ambos nombres
+- [x] Indicar claramente división de trabajo
 
 ---
 
 ## ✅ Entrega Final
 
-- [ ] PR creado antes de la fecha límite
-- [ ] Docker Compose funcional
-- [ ] README completo y claro
-- [ ] Checklist completado
-- [ ] Base de datos persiste entre sesiones
-- [ ] Historial funcional en el frontend
+- [x] PR creado antes de la fecha límite
+- [x] Docker Compose funcional
+- [x] README completo y claro
+- [x] Checklist completado
+- [x] Base de datos persiste entre sesiones
+- [x] Historial funcional en el frontend
 
 ---
 
@@ -152,7 +152,7 @@
 ---
 
 📅 **Estado final:**  
-- [ ] Proyecto funcional  
-- [ ] Documentación completa  
-- [ ] Docker Compose validado  
-- [ ] Entregado vía Pull Request
+- [x] Proyecto funcional  
+- [x] Documentación completa  
+- [x] Docker Compose validado  
+- [x] Entregado vía Pull Request
