@@ -79,4 +79,4 @@ El proyecto utiliza `docker-compose.yml` para gestionar tres servicios principal
 *   **ollama**: Servicio de IA para las traducciones.
 
 ---
-*Proyecto desarrollado para la asignatura de Desarrollo Web en Entorno Servidor / Cliente.*
+*Proyecto desarrollado para la asignatura de Desarrollo de Agentes IA para la Web.*
